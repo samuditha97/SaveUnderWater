@@ -86,7 +86,7 @@ export const HomeScreen = ({ navigation }) => {
             underlineColorAndroid="transparent"
             //onChangeText={(password) => setPassword(password)}
           />
-          <TouchableHighlight style={styles.button} >
+          <TouchableHighlight style={styles.button}  onPress={() => navigation.navigate("Event")}>
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableHighlight>
           <View style={styles.row}>
