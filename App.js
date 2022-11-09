@@ -7,6 +7,7 @@ import {HomeScreen} from './screens/HomeScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Signup } from './screens/Signup';
 import Event from "./screens/Donor/Event";
+import OneEvent from "./screens/Donor/OneEvent";
 
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,7 @@ const App = () => {
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Event" component={Event} />
+          <Stack.Screen name="OneEvent" component={OneEvent} />
         </Stack.Navigator>
       </NavigationContainer>
     )

@@ -13,12 +13,12 @@ import {
   Input,
   Icon,
   Menu,
-  HamburgerIcon,
   Pressable,
   Box,
   HamburgerIcon,
   HStack,
 } from "native-base";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 function Example() {
   return (
