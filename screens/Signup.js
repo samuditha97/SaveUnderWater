@@ -67,7 +67,7 @@ export const Signup = ({ navigation }) => {
           role = null;
       }
       await axios
-        .post("https://pms-92dm.onrender.com/api/user/", {
+        .post("https://uee.up.railway.app/api/user/", {
           name,
           nic,
           email,
@@ -161,7 +161,7 @@ export const Signup = ({ navigation }) => {
             <Text>Already have an account?</Text>
             <TouchableHighlight
               style={styles.transparentButton}
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("HomeScreen")}
             >
               <Text style={styles.signupText}>Login</Text>
             </TouchableHighlight>
