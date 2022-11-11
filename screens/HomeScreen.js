@@ -88,7 +88,7 @@ export const HomeScreen = ({ navigation }) => {
           />
           <TouchableHighlight
             style={styles.button}
-            onPress={() => navigation.navigate("Event")}
+            onPress={() => navigation.navigate("OneEvent")}
           >
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableHighlight>
