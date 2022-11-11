@@ -13,50 +13,48 @@ import {
 } from "react-native";
 
 export const HomeScreen = ({ navigation }) => {
-  // const [email, setEmail] = useState(null);
-  // const [password, setPassword] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [password, setPassword] = useState(null);
 
-  // const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const reset = () => {
+    setUserName(null);
+    setPassword(null);
+  };
 
-  // const reset = () => {
-  //   setEmail(null);
-  //   setPassword(null);
-  // };
+  useEffect(() => {
+    const validate = async () => {
+      const token = await AsyncStorage.getItem("token");
+      if (token) navigation.navigate("Event");
+    };
+    validate();
+    reset();
+  }, []);
 
-  // useEffect(() => {
-  //   const validate = async () => {
-  //     const token = await AsyncStorage.getItem("token");
-  //     if (token) navigation.navigate("Purchase");
-  //   };
-  //   validate();
-  //   reset();
-  // }, []);
-
-  // const handleLogin = async () => {
-  //   if (!String(email).match(emailRegEx)) {
-  //     alert("Please, enter a valid email");
-  //   } else if (!password) {
-  //     alert("Please, enter a password");
-  //   } else {
-  //     await axios
-  //       .post("https://pms-92dm.onrender.com/api/user/login", {
-  //         email: email,
-  //         password: password,
-  //       })
-  //       .then(async (res) => {
-  //         if (res?.status === 200 && res?.data?.data?.token) {
-  //           await AsyncStorage.setItem("token", res.data.data.token);
-  //           reset();
-  //           navigation.navigate("Purchase");
-  //         } else {
-  //           alert("Invalid username or password.");
-  //         }
-  //       })
-  //       .catch(() => {
-  //         alert("Oops... Something went wrong!");
-  //       });
-  //   }
-  // };
+  const handleLogin = async () => {
+    if (!userName) {
+      alert("Please, enter a valid username");
+    } else if (!password) {
+      alert("Please, enter a password");
+    } else {
+      await axios
+        .post("https://uee.up.railway.app/api/user/login", {
+          userName: userName,
+          password: password,
+        })
+        .then(async (res) => {
+          if (res?.status === 200 && res?.data?.data?.token) {
+            await AsyncStorage.setItem("token", res.data.data.token);
+            reset();
+            navigation.navigate("Event");
+          } else {
+            alert("Invalid username or password.");
+          }
+        })
+        .catch(() => {
+          alert("Oops... Something went wrong!");
+        });
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -73,10 +71,10 @@ export const HomeScreen = ({ navigation }) => {
           <Text style={styles.label}>Log in</Text>
           <TextInput
             style={styles.input}
-            placeholder="Email"
-            keyboardType="email-address"
+            placeholder="Username"
+            keyboardType="text"
             underlineColorAndroid="transparent"
-            //onChangeText={(email) => setEmail(email)}
+            onChangeText={(userName) => setUserName(userName)}
           />
           <TextInput
             style={styles.input}
@@ -84,12 +82,9 @@ export const HomeScreen = ({ navigation }) => {
             keyboardType="password"
             secureTextEntry={true}
             underlineColorAndroid="transparent"
-            //onChangeText={(password) => setPassword(password)}
+            onChangeText={(password) => setPassword(password)}
           />
-          <TouchableHighlight
-            style={styles.button}
-            onPress={() => navigation.navigate("Event")}
-          >
+          <TouchableHighlight style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableHighlight>
           <View style={styles.row}>
