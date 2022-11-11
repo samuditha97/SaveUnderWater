@@ -45,7 +45,16 @@ export const HomeScreen = ({ navigation }) => {
           if (res?.status === 200 && res?.data?.data?.token) {
             await AsyncStorage.setItem("token", res.data.data.token);
             reset();
-            navigation.navigate("Event");
+            if(res?.data?.data?.user?.role === "VOLUNTEER"){
+              navigation.navigate("Event");
+            } else if(res?.data?.data?.user?.role === "DONER"){
+              navigation.navigate("Event");
+            } else if(res?.data?.data?.user?.role === "MARINE_BIOLOGIST"){
+              navigation.navigate("Event");
+            }else{
+              navigation.navigate("Event");
+            }
+            
           } else {
             alert("Invalid username or password.");
           }
