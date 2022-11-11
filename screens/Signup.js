@@ -12,64 +12,69 @@ import {
   ScrollView,
 } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
-//firstName, lastName, email, userName, password, role
 
 export const Signup = ({ navigation }) => {
   const data = [
-    { label: "Volunteer", value: "VOLUNTEER" },
-    { label: "Doner", value: "DONER" },
-    { label: "Marine_Biologist", value: "MARINE_BIOLOGIST" },
-    { label: "Other", value: "MANAGER" },
+    { label: "Procurement", value: "PROCUREMENT" },
+    { label: "Management", value: "MANAGEMENT" },
+    { label: "Onsite", value: "ONSITE" },
+    { label: "Other", value: "OTHER" },
   ];
 
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
+  const [name, setName] = useState(null);
+  const [nic, setNIC] = useState(null);
   const [email, setEmail] = useState(null);
-  const [userName, setUserName] = useState(null);
+  const [mobile, setMobile] = useState(null);
   const [department, setDepartment] = useState(null);
   const [password, setPassword] = useState(null);
 
   const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   const reset = () => {
-    setFirstName(null);
-    setLastName(null);
+    setName(null);
+    setNIC(null);
     setEmail(null);
-    setUserName(null);
+    setMobile(null);
     setDepartment(null);
     setPassword(null);
   };
 
   const handleRegister = async () => {
     let role;
-    if (!firstName) alert("Please, enter a name");
-    else if (!lastName) alert("Please, enter the NIC");
+    if (!name) alert("Please, enter a name");
+    else if (!nic) alert("Please, enter the NIC");
     else if (!String(email).match(emailRegEx)) {
       alert("Please, enter a valid email");
-    } else if (!userName) alert("Please, enter a mobile number");
+    } else if (!mobile) alert("Please, enter a mobile number");
     else if (!department) alert("Please, select a department");
     else if (!password && password.length() > 6)
       alert("Please, enter a valid password");
     else {
       switch (department) {
-        case "VOLUNTEER":
-          role = "VOLUNTEER";
+        case "PROCUREMENT":
+          role = "PROCUREMENT";
           break;
-        case "DONER":
-          role = "DONER";
+        case "MANAGEMENT":
+          role = "SENIOR";
           break;
-        case "MARINE_BIOLOGIST":
-          role = "MARINE_BIOLOGIST";
+        case "ONSITE":
+          role = "SITE_MANAGER";
           break;
         case "OTHER":
-          role = "MANAGER";
+          role = "SUPPLIER";
           break;
         default:
           role = null;
       }
       await axios
         .post("https://uee.up.railway.app/api/user/", {
-          firstName, lastName, email, userName, department, password, role 
+          name,
+          nic,
+          email,
+          mobile,
+          department,
+          role,
+          password,
         })
         .then(async (res) => {
           if (res?.status === 200) {
@@ -104,37 +109,31 @@ export const Signup = ({ navigation }) => {
           <Text style={styles.label}>Register</Text>
           <TextInput
             style={styles.input}
-            placeholder="FirstName"
+            placeholder="Name"
             keyboardType="text"
             underlineColorAndroid="transparent"
-            value={firstName}
-            onChangeText={(firstName) => setFirstName(firstName)}
+          //  onChangeText={(name) => setName(name)}
           />
-
           <TextInput
             style={styles.input}
-            placeholder="LastName"
+            placeholder="NIC"
             keyboardType="text"
             underlineColorAndroid="transparent"
-            value={lastName}
-            onChangeText={(lastName) => setLastName(lastName)}
+          //  onChangeText={(nic) => setNIC(nic)}
           />
-       
           <TextInput
             style={styles.input}
             placeholder="Email"
             keyboardType="email-address"
             underlineColorAndroid="transparent"
-            value={email}
-            onChangeText={(email) => setEmail(email)}
+            //onChangeText={(email) => setEmail(email)}
           />
           <TextInput
             style={styles.input}
-            placeholder="UserName"
+            placeholder="Mobile"
             keyboardType="phone-pad"
             underlineColorAndroid="transparent"
-            value={userName}
-            onChangeText={(userName) => setUserName(userName)}
+           // onChangeText={(mobile) => setMobile(mobile)}
           />
           <Dropdown
             style={styles.dropdown}
@@ -143,9 +142,9 @@ export const Signup = ({ navigation }) => {
             valueField="value"
             placeholder="Type"
             value={department}
-            onChange={(item) => {
-              setDepartment(item.value);
-            }}
+            // onChange={(item) => {
+            //   setDepartment(item.value);
+            // }}
           />
           <TextInput
             style={styles.input}
@@ -153,8 +152,7 @@ export const Signup = ({ navigation }) => {
             keyboardType="password"
             secureTextEntry={true}
             underlineColorAndroid="transparent"
-            value={password}
-            onChangeText={(password) => setPassword(password)}
+           // onChangeText={(password) => setPassword(password)}
           />
           <TouchableHighlight style={styles.button} onPress={handleRegister}>
             <Text style={styles.buttonText}>Sign up</Text>
