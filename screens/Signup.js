@@ -119,7 +119,7 @@ export const Signup = ({ navigation }) => {
             value={lastName}
             onChangeText={(lastName) => setLastName(lastName)}
           />
-       
+
           <TextInput
             style={styles.input}
             placeholder="Email"
@@ -131,7 +131,7 @@ export const Signup = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="UserName"
-            keyboardType="phone-pad"
+            keyboardType="text"
             underlineColorAndroid="transparent"
             value={userName}
             onChangeText={(userName) => setUserName(userName)}

@@ -46,9 +46,9 @@ export const HomeScreen = ({ navigation }) => {
             await AsyncStorage.setItem("token", res.data.data.token);
             reset();
             if(res?.data?.data?.user?.role === "VOLUNTEER"){
-              navigation.navigate("Event");
+              navigation.navigate("EventList");
             } else if(res?.data?.data?.user?.role === "DONER"){
-              navigation.navigate("Event");
+              navigation.navigate("Donation");
             } else if(res?.data?.data?.user?.role === "MARINE_BIOLOGIST"){
               navigation.navigate("Event");
             }else{

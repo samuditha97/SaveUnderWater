@@ -16,21 +16,19 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { Card, Searchbar } from "react-native-paper";
-import OneEvent from "./OneEvent";
-import { useNavigation } from "@react-navigation/native";
 
-const Event = ({ props }) => {
+const EventList = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
-  const navigation = useNavigation();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.body}
     >
       <View style={styles.cover}>
-        <ImageBackground source={require("../../assets/donorEvent.jpg")}>
+        <ImageBackground source={require("../../assets/voluntEventList.jpg")}>
           <Searchbar
             style={styles.search}
             placeholder="Search"
@@ -48,10 +46,7 @@ const Event = ({ props }) => {
               <Text style={styles.paragraph2}>Event Location</Text>
               <Text style={styles.paragraph2}>Event Date</Text>
               <Text style={styles.paragraph2}>Total Funds</Text>
-              <TouchableHighlight
-                style={styles.button}
-                onPress={(OneEvent) => navigation.navigate(props)}
-              >
+              <TouchableHighlight style={styles.button}>
                 <Text style={styles.buttonText}>View</Text>
               </TouchableHighlight>
             </Card>
@@ -106,7 +101,7 @@ const Event = ({ props }) => {
   );
 };
 
-export default Event;
+export default EventList;
 
 const styles = StyleSheet.create({
   container: {
