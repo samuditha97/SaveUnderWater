@@ -8,7 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Signup } from './screens/Signup';
 import Event from "./screens/Donor/Event";
 import OneEvent from "./screens/Donor/OneEvent";
-
+import EventList from "./screens/Volunteer/EventList";
+import Donation from "./screens/Donor/Donation";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,8 @@ const App = () => {
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Event" component={Event} />
           <Stack.Screen name="OneEvent" component={OneEvent} />
+          <Stack.Screen name="EventList" component={EventList} />
+          <Stack.Screen name="Donation" component={Donation} />
         </Stack.Navigator>
       </NavigationContainer>
     )
