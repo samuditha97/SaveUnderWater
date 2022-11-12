@@ -15,6 +15,8 @@ import NewPollutedLocation from './screens/Volunteer/NewPollutedLocaiton';
 import Facts from './screens/Biologist/Facts';
 import MainUIVolunteer from './screens/Volunteer/MainUIVolunteer';
 import DonatorList from './screens/Volunteer/DonatorList';
+import ManagerHome from './screens/Manager/ManagerHome';
+import { AddEvent } from './screens/Manager/AddEvent';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +58,8 @@ const App = () => {
           <Stack.Screen name="MainUIVolunteer" component={MainUIVolunteer} />
           <Stack.Screen name='Facts' component={Facts} />
           <Stack.Screen name='DonatorList' component={DonatorList} />
+          <Stack.Screen name="ManagerHome" component={ManagerHome} />
+          <Stack.Screen name="AddEvent" component={AddEvent} />
 
         </Stack.Navigator>
       </NavigationContainer>
