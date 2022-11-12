@@ -24,7 +24,7 @@ export const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     const validate = async () => {
       const token = await AsyncStorage.getItem("token");
-      if (token) navigation.navigate("Facts");
+      if (token) navigation.navigate("MainUIVolunteer");
     };
     validate();
     reset();
@@ -46,7 +46,7 @@ export const HomeScreen = ({ navigation }) => {
             await AsyncStorage.setItem("token", res.data.data.token);
             reset();
             if(res?.data?.data?.user?.role === "VOLUNTEER"){
-              navigation.navigate("EventList");
+              navigation.navigate("MainUIVolunteer");
             } else if(res?.data?.data?.user?.role === "DONER"){
               navigation.navigate("Donation");
             } else if(res?.data?.data?.user?.role === "MARINE_BIOLOGIST"){
