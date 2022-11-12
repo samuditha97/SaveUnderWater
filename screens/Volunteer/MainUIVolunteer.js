@@ -13,6 +13,7 @@ import {
   SafeAreaView,
   ImageBackground,
   Button,
+  Center,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { Card, Searchbar } from "react-native-paper";
@@ -30,21 +31,15 @@ const MainUIVolunteer = ({ navigation }) => {
     >
       <View style={styles.cover}>
         <ImageBackground source={require("../../assets/pollutedLocationList.jpg")}>
-          <Searchbar
-            style={styles.search}
-            placeholder="Search"
-            onChangeText={onChangeSearch}
-            value={searchQuery}
-          />
           <Text style={styles.topic}>Welcome to Protect the Marine Lives!</Text>
         </ImageBackground>
-        <TouchableHighlight style={styles.buttonA} onPress={() => navigation.navigate("NewPollutedLocation")}>
+        <TouchableHighlight style={styles.buttonA} onPress={() => navigation.navigate("DonatorList")}>
           <Text style={styles.buttonText}>Donator</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.buttonB} onPress={() => navigation.navigate("NewPollutedLocation")}>
+        <TouchableHighlight style={styles.buttonB} onPress={() => navigation.navigate("EventList")}>
           <Text style={styles.buttonText}>Events</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.buttonC} onPress={() => navigation.navigate("NewPollutedLocation")}>
+        <TouchableHighlight style={styles.buttonC} onPress={() => navigation.navigate("PollutedLocationList")}>
           <Text style={styles.buttonText}>Polluted Locations</Text>
         </TouchableHighlight>
       </View>
@@ -149,7 +144,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     fontSize: 16,
     borderRadius: 8,
-    marginTop: 10,
+    marginTop: 40,
     width: 150,
     marginLeft: 50,
   },
@@ -170,7 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 8,
     marginTop: 10,
-    width: 300,
+    width: 310,
     marginLeft: 50,
   },
   buttonNewLocation: {
@@ -221,7 +216,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   body: {
-    height: "130%",
+    height: "110%",
     display: "flex",
   },
 });
