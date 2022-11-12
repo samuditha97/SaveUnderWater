@@ -10,12 +10,9 @@ import Event from "./screens/Donor/Event";
 import OneEvent from "./screens/Donor/OneEvent";
 import EventList from "./screens/Volunteer/EventList";
 import Donation from "./screens/Donor/Donation";
-<<<<<<< HEAD
 import PollutedLocationList from './screens/Volunteer/PollutedLocationList';
 import NewPollutedLocation from './screens/Volunteer/NewPollutedLocaiton';
-=======
 import Facts from './screens/Biologist/Facts';
->>>>>>> 26e9500073dc1bcf40fd02ed6725366b493bb645
 
 const Stack = createNativeStackNavigator();
 
