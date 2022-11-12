@@ -24,7 +24,7 @@ export const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     const validate = async () => {
       const token = await AsyncStorage.getItem("token");
-      if (token) navigation.navigate("MainUIVolunteer");
+      if (token) navigation.navigate("ManagerHome");
     };
     validate();
     reset();
