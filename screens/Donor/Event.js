@@ -44,10 +44,12 @@ const Event = ({ navigation }) => {
         <ScrollView>
           <View style={styles.container}>
             <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
+              <Text style={styles.paragraph}>
+                Hikkaduwa Coral Reefs Project
+              </Text>
+              <Text style={styles.paragraph2}>Location: Hikkaduwa Beach</Text>
+              <Text style={styles.paragraph2}>Date: 12-11-2022</Text>
+              <Text style={styles.paragraph2}>Funds: Rs:13400</Text>
               <TouchableHighlight
                 style={styles.button}
                 onPress={() => navigation.navigate("OneEvent")}
@@ -58,10 +60,10 @@ const Event = ({ navigation }) => {
           </View>
           <View style={styles.container}>
             <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
+              <Text style={styles.paragraph}>Unawatuna Beach Cleaning</Text>
+              <Text style={styles.paragraph2}>Location: Unawatuna Beach</Text>
+              <Text style={styles.paragraph2}>Date: 12-09-2022</Text>
+              <Text style={styles.paragraph2}>Funds: Rs:73400</Text>
               <TouchableHighlight style={styles.button}>
                 <Text style={styles.buttonText}>View</Text>
               </TouchableHighlight>
@@ -69,10 +71,10 @@ const Event = ({ navigation }) => {
           </View>
           <View style={styles.container}>
             <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
+              <Text style={styles.paragraph}>Madu Oya Project</Text>
+              <Text style={styles.paragraph2}>Location: Madu Oya </Text>
+              <Text style={styles.paragraph2}>Date: 24-06-2022</Text>
+              <Text style={styles.paragraph2}>Funds: Rs:13400</Text>
               <TouchableHighlight style={styles.button}>
                 <Text style={styles.buttonText}>View</Text>
               </TouchableHighlight>
@@ -80,10 +82,10 @@ const Event = ({ navigation }) => {
           </View>
           <View style={styles.container}>
             <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
+              <Text style={styles.paragraph}>Kaluthara Beach Cleaning</Text>
+              <Text style={styles.paragraph2}>Location: Kaluthara Beach </Text>
+              <Text style={styles.paragraph2}>Date: 24-12-2022</Text>
+              <Text style={styles.paragraph2}>Funds: Rs:103,400</Text>
               <TouchableHighlight style={styles.button}>
                 <Text style={styles.buttonText}>View</Text>
               </TouchableHighlight>
@@ -91,10 +93,10 @@ const Event = ({ navigation }) => {
           </View>
           <View style={styles.container}>
             <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
+              <Text style={styles.paragraph}>Waligama Bay cleaning</Text>
+              <Text style={styles.paragraph2}>Location: Waligama Beach </Text>
+              <Text style={styles.paragraph2}>Date: 20-11-2022</Text>
+              <Text style={styles.paragraph2}>Funds: Rs:3,400</Text>
               <TouchableHighlight style={styles.button}>
                 <Text style={styles.buttonText}>View</Text>
               </TouchableHighlight>

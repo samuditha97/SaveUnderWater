@@ -48,9 +48,9 @@ export const HomeScreen = ({ navigation }) => {
             if(res?.data?.data?.user?.role === "VOLUNTEER"){
               navigation.navigate("EventList");
             } else if(res?.data?.data?.user?.role === "DONER"){
-              navigation.navigate("Donation");
-            } else if(res?.data?.data?.user?.role === "MARINE_BIOLOGIST"){
               navigation.navigate("Event");
+            } else if(res?.data?.data?.user?.role === "MARINE_BIOLOGIST"){
+              navigation.navigate("Facts");
             }else{
               navigation.navigate("Event");
             }

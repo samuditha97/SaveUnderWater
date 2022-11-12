@@ -13,6 +13,8 @@ import Donation from "./screens/Donor/Donation";
 import PollutedLocationList from './screens/Volunteer/PollutedLocationList';
 import NewPollutedLocation from './screens/Volunteer/NewPollutedLocaiton';
 import Facts from './screens/Biologist/Facts';
+import Progress from "./screens/Donor/Progress";
+import Summery from "./screens/Donor/Summery";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,9 +52,17 @@ const App = () => {
           <Stack.Screen name="OneEvent" component={OneEvent} />
           <Stack.Screen name="EventList" component={EventList} />
           <Stack.Screen name="Donation" component={Donation} />
-          <Stack.Screen name="PollutedLocationList" component={PollutedLocationList} />
-          <Stack.Screen name="NewPollutedLocation" component={NewPollutedLocation} />
-          <Stack.Screen name='Facts' component={Facts} />
+          <Stack.Screen
+            name="PollutedLocationList"
+            component={PollutedLocationList}
+          />
+          <Stack.Screen
+            name="NewPollutedLocation"
+            component={NewPollutedLocation}
+          />
+          <Stack.Screen name="Facts" component={Facts} />
+          <Stack.Screen name="Progress" component={Progress} />
+          <Stack.Screen name="Summery" component={Summery} />
         </Stack.Navigator>
       </NavigationContainer>
     )

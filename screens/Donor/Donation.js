@@ -18,11 +18,8 @@ import { useNavigation } from "@react-navigation/native";
 import { BackgroundImage } from "@rneui/base";
 import DocumentPicker, { types } from "react-native-document-picker";
 
-const Donation = ({ props }) => {
+const Donation = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
-
-  const onChangeSearch = (query) => setSearchQuery(query);
-  const navigation = useNavigation();
 
   return (
     <KeyboardAvoidingView
@@ -33,7 +30,7 @@ const Donation = ({ props }) => {
         source={require("../../assets/donation.jpg")}
         style={styles.cover}
       >
-        <Text style={styles.topic}>Donation </Text>
+        <Text style={styles.topic}>Donation Form </Text>
       </BackgroundImage>
       <ScrollView style={styles.container}>
         <View style={styles.innerContainer}>
@@ -90,10 +87,16 @@ const Donation = ({ props }) => {
             multiline={true}
             numberOfLines={5}
             underlineColorAndroid="transparent"
-            onChangeText={(text) => setDescription(text)}
+            //onChangeText={(text) => setDescription(text)}
           />
           <TouchableHighlight style={styles.button}>
             <Text style={styles.buttonText}>Submit</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button2}
+            onPress={() => navigation.navigate("Summery")}
+          >
+            <Text style={styles.buttonText2}>Summery</Text>
           </TouchableHighlight>
           <View style={styles.row}></View>
         </View>
@@ -110,17 +113,17 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   cover: {
-    flex: 1,
+    display: "flex",
     height: "100%",
     maxHeight: "26%",
     resizeMode: "cover",
     width: "100%",
   },
   container: {
-    flex: 3,
+    display: "flex",
     height: "74%",
     flexDirection: "column",
-    padding: 30,
+    padding: 20,
   },
   innerContainer: {
     display: "flex",
@@ -155,11 +158,14 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#2B65EC",
-    paddingHorizontal: 10,
-    paddingVertical: 14,
+    paddingHorizontal: 6,
+    paddingVertical: 7,
     fontSize: 16,
     borderRadius: 8,
-    marginTop: 12,
+    marginTop: 10,
+    width: 110,
+    height: 40,
+    marginLeft: 250,
   },
   buttonText: {
     color: "#ffffff",
@@ -191,5 +197,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#fff",
     backgroundColor: "#3BB9FF",
+  },
+  button2: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 6,
+    paddingVertical: 7,
+    fontSize: 16,
+    borderRadius: 8,
+    marginTop: -40,
+    width: 100,
+    marginLeft: 10,
+    borderColor: "#2B65EC",
+    borderWidth: 1,
+    height: 40,
+  },
+  buttonText2: {
+    color: "#000",
+    fontSize: 16,
+    fontWeight: "700",
+    textAlign: "center",
   },
 });
