@@ -42,14 +42,15 @@ const App = () => {
               component={OnboardingScreen}
             />
           )}
-          <Stack.Screen name="NewPollutedLocation" component={NewPollutedLocation} />
+          <Stack.Screen name="PollutedLocationList" component={PollutedLocationList} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Event" component={Event} />
           <Stack.Screen name="OneEvent" component={OneEvent} />
           <Stack.Screen name="EventList" component={EventList} />
           <Stack.Screen name="Donation" component={Donation} />
-          <Stack.Screen name="PollutedLocationList" component={PollutedLocationList} />
+          {/* <Stack.Screen name="PollutedLocationList" component={PollutedLocationList} /> */}
+          <Stack.Screen name="NewPollutedLocation" component={NewPollutedLocation} />
         </Stack.Navigator>
       </NavigationContainer>
     )

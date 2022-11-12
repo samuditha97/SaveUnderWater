@@ -37,6 +37,9 @@ const PollutedLocationList = () => {
           />
           <Text style={styles.topic}>Polluted Location List</Text>
         </ImageBackground>
+        <TouchableHighlight style={styles.buttonNewLocation}>
+          <Text style={styles.buttonText}>Add New Polluted Location</Text>
+        </TouchableHighlight>
       </View>
       <View style={styles.container2}>
         <ScrollView>
@@ -156,7 +159,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 9,
     width: 300,
-    marginLeft:20,
+    marginLeft: 20,
+  },
+  buttonNewLocation: {
+    backgroundColor: "#42a1f5",
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    fontSize: 25,
+    borderRadius: 8,
+    marginTop: 15,
+    width: 350,
+    marginLeft: 30,
   },
   button: {
     backgroundColor: "#2B65EC",
@@ -176,7 +189,7 @@ const styles = StyleSheet.create({
   },
   topic: {
     marginLeft: 40,
-    marginTop: 100,
+    marginTop: 50,
     fontFamily: "sans-serif",
     fontSize: 30,
     color: "#fff",
