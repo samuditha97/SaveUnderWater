@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment/moment";
 import {
   StyleSheet,
   Text,
@@ -22,6 +23,41 @@ const EventList = () => {
 
   const onChangeSearch = (query) => setSearchQuery(query);
 
+  const event = [
+    {
+      eventName:
+        "Clean Hikkadu",
+      eventLocation: "Hikkaduwa",
+      image: require("../../assets/locations/location_1.jpg"),
+      eventDate: "2022-11-12T03:41:12Z",
+      totalFund: "20000.00"
+    },
+    {
+      eventName:
+        "Save Life in Panadura",
+      eventLocation: "Panadura",
+      image: require("../../assets/locations/location_2.jpg"),
+      eventDate: "2022-11-12T03:41:12Z",
+      totalFund: "305900.00"
+    },
+    {
+      eventName:
+        "Underwater travel with cleanup",
+      eventLocation: "Trinco",
+      image: require("../../assets/locations/location_3.jpg"),
+      eventDate: "2022-11-12T03:41:12Z",
+      totalFund: "106002.00"
+    },
+    {
+      eventName:
+        "Clean Jaffna Beach",
+      eventLocation: "Jaffna",
+      image: require("../../assets/locations/location_1.jpg"),
+      eventDate: "2022-11-12T03:41:12Z",
+      totalFund: "505000.00"
+    },
+  ];
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -40,61 +76,25 @@ const EventList = () => {
       </View>
       <View style={styles.container2}>
         <ScrollView>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Event Name</Text>
-              <Text style={styles.paragraph2}>Event Location</Text>
-              <Text style={styles.paragraph2}>Event Date</Text>
-              <Text style={styles.paragraph2}>Total Funds</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
+        {event.map((event, key) => (
+            <View style={styles.container}>
+              <Card style={styles.innerContainer}>
+                <Text style={styles.paragraph}>{event.eventName}</Text>
+                <View style={styles.articleBottom}>
+                  <Image style={styles.userImage} source={event.image} />
+                </View>
+                <Text style={styles.paragraph2}>Location - {event.eventLocation}</Text>
+                <Text style={styles.paragraph2}>Added Date - {moment(event.eventDate).calendar()}</Text>
+                <Text style={styles.paragraph2}>Total Fund (Rs.) - {event.totalFund}</Text>
+                <TouchableHighlight style={styles.buttonVote}>
+                  <Text style={styles.buttonText}>Vote to clean</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.button}>
+                  <Text style={styles.buttonText}>View</Text>
+                </TouchableHighlight>
+              </Card>
+            </View>
+          ))}
         </ScrollView>
       </View>
     </KeyboardAvoidingView>
@@ -109,6 +109,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 5,
     backgroundColor: "#ecf0f1",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   paragraph: {
     fontSize: 18,
@@ -118,19 +121,19 @@ const styles = StyleSheet.create({
   },
   cover: {
     flex: 1,
-    height: "100%",
-    maxHeight: "20%",
+    height: "110%",
+    maxHeight: "40%",
     resizeMode: "cover",
     width: "100%",
   },
   container2: {
     display: "flex",
-    height: "74%",
+    height: "80%",
     flexDirection: "column",
-    padding: 30,
+    padding: 20,
   },
   innerContainer: {
-    height: 170,
+    height: 280,
   },
   button: {
     backgroundColor: "#2B65EC",
@@ -139,8 +142,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 8,
     marginTop: -5,
-    width: 60,
-    marginLeft: 240,
+    width: 300,
+    marginLeft: 10,
+    marginRight: 10,
   },
   buttonText: {
     color: "#ffffff",
@@ -149,10 +153,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   topic: {
-    marginLeft: 250,
-    marginTop: 100,
+    marginLeft: 100,
+    marginTop: 40,
     fontFamily: "sans-serif",
-    fontSize: 20,
+    fontSize: 30,
     color: "#fff",
     backgroundColor: "#3BB9FF",
   },
@@ -168,9 +172,29 @@ const styles = StyleSheet.create({
   paragraph2: {
     marginLeft: 40,
     fontSize: 15,
+    marginTop: 10
   },
   body: {
     height: "110%",
     display: "flex",
+  },
+  articleBottom: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  userImage: {
+    width: 100,
+    height: 100,
+    resizeMode: "cover",
+    borderRadius: 60,
+    borderColor: "rgba(0, 0, 0, 0.1)",
+    borderWidth: 2,
+  },
+  username: {
+    fontSize: 18,
+    color: "rgba(0, 0, 0, 0.4)",
+    marginHorizontal: 10,
   },
 });

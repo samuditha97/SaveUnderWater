@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment/moment";
 import {
   StyleSheet,
   Text,
@@ -20,6 +21,31 @@ import { Card, Searchbar } from "react-native-paper";
 import NewPollutedLocation from "./NewPollutedLocaiton";
 
 const MainUIVolunteer = ({ navigation }) => {
+
+  const location = [
+    {
+      locationName:
+        "Hikkaduwa",
+      locationAddress: "Hikkaduwa",
+      image: require("../../assets/locations/location_1.jpg"),
+      checkedDate: "2022-11-12T03:41:12Z",
+    },
+    {
+      locationName:
+        "Kaluthara",
+      locationAddress: "Kaluthara",
+      image: require("../../assets/locations/location_2.jpg"),
+      checkedDate: "2022-11-15T04:15:12Z",
+    },
+    {
+      locationName:
+        "Marbel Beach",
+      locationAddress: "Trinco",
+      image: require("../../assets/locations/location_3.jpg"),
+      checkedDate: "2022-02-12T03:22:12Z",
+    },
+  ];
+
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -45,61 +71,24 @@ const MainUIVolunteer = ({ navigation }) => {
       </View>
       <View style={styles.container2}>
         <ScrollView>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
+          {location.map((location, key) => (
+            <View style={styles.container}>
+              <Card style={styles.innerContainer}>
+                <Text style={styles.paragraph}>{location.locationName}</Text>
+                <View style={styles.articleBottom}>
+                  <Image style={styles.userImage} source={location.image} />
+                </View>
+                <Text style={styles.paragraph2}>Location Address - {location.locationAddress}</Text>
+                <Text style={styles.paragraph2}>Added Date - {moment(location.checkedDate).calendar()}</Text>
+                <TouchableHighlight style={styles.buttonVote}>
+                  <Text style={styles.buttonText}>Vote to clean</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.button}>
+                  <Text style={styles.buttonText}>View</Text>
+                </TouchableHighlight>
+              </Card>
+            </View>
+          ))}
         </ScrollView>
       </View>
     </KeyboardAvoidingView>
@@ -121,6 +110,25 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 20,
   },
+  articleBottom: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  userImage: {
+    width: 100,
+    height: 100,
+    resizeMode: "cover",
+    borderRadius: 60,
+    borderColor: "rgba(0, 0, 0, 0.1)",
+    borderWidth: 2,
+  },
+  username: {
+    fontSize: 18,
+    color: "rgba(0, 0, 0, 0.4)",
+    marginHorizontal: 10,
+  },
   cover: {
     flex: 1,
     height: "100%",
@@ -136,7 +144,7 @@ const styles = StyleSheet.create({
     marginTop: 100
   },
   innerContainer: {
-    height: 180,
+    height: 280,
   },
   buttonA: {
     backgroundColor: "#2B65EC",

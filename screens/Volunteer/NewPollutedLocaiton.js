@@ -20,8 +20,51 @@ import { BackgroundImage } from "@rneui/base";
 const NewPollutedLocation = ({ props }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
+  const [locationName, setLocationName] = useState(null);
+  const [locationAddress, setLocationAddress] = useState(null);
+  const [checkedDate, setCheckedDate] = useState(null);
+  const [description, setDescription] = useState(null);
+
   const onChangeSearch = (query) => setSearchQuery(query);
   const navigation = useNavigation();
+  
+  const reset = () => {
+    setLocationName(null);
+    setLocationAddress(null);
+    setCheckedDate(null);
+    setDescription(null);
+  };
+
+  const handleAddLocation = async () => {
+    if (!locationName) alert("Please, enter location name");
+    else if (!locationAddress) alert("Please, enter an address");
+    else if (!checkedDate) alert("Please, select an checked date");
+    else if (!description) alert("Please, enter the description");
+    else {
+      await axios
+        .post(
+          "http://localhost:5000/api/location/",
+          {
+            title: locationName,
+            address: locationAddress,
+            checkedDate: checkedDate,
+            description: description,
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          if (res.status === 200) {
+            reset();
+            alert("Adding Successful");
+          } else {
+            alert("Oops... Something went wrong!");
+          }
+        })
+        .catch(() => alert("Oops... Something went wrong!"));
+    }
+  };
+
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -34,13 +77,14 @@ const NewPollutedLocation = ({ props }) => {
       </View>
       <ScrollView style={styles.container}>
         <View style={styles.innerContainer}>
+
           <TextInput
             style={styles.input}
             placeholder="Location Name"
             keyboardType="text"
             underlineColorAndroid="transparent"
-          //value={locationName}
-          //onChangeText={(locationName) => setLocationName(locationName)}
+            value={locationName}
+            onChangeText={(locationName) => setLocationName(locationName)}
           />
 
           <TextInput
@@ -48,26 +92,17 @@ const NewPollutedLocation = ({ props }) => {
             placeholder="Location Address"
             keyboardType="text"
             underlineColorAndroid="transparent"
-          //value={locationAddress}
-          //onChangeText={(locationAddress) => setLocationAddress(locationAddress)}
+            value={locationAddress}
+            onChangeText={(locationAddress) => setLocationAddress(locationAddress)}
           />
 
           <TextInput
             style={styles.input}
-            placeholder="Checkedd Date"
+            placeholder="Checked Date"
             keyboardType="text"
             underlineColorAndroid="transparent"
-          //value={checkedDate}
-          //onChangeText={(checkedDate) => setCheckedDate(checkedDate)}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Description"
-            keyboardType="text"
-            underlineColorAndroid="transparent"
-          //value={description}
-          //onChangeText={(description) => setDescription(description)}
+            value={checkedDate}
+            onChangeText={(checkedDate) => setCheckedDate(checkedDate)}
           />
           <TextInput
             style={styles.input}
@@ -76,10 +111,10 @@ const NewPollutedLocation = ({ props }) => {
             multiline={true}
             numberOfLines={5}
             underlineColorAndroid="transparent"
-            // value={description}
-            // onChangeText={(description) => setDescription(description)}
+            value={description}
+            onChangeText={(description) => setDescription(description)}
           />
-          <TouchableHighlight style={styles.button}>
+          <TouchableHighlight style={styles.button} onPress={handleAddLocation}>
             <Text style={styles.buttonText}>Add Location</Text>
           </TouchableHighlight>
           <View style={styles.row}></View>

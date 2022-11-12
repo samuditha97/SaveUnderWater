@@ -22,6 +22,39 @@ const DonatorList = ({ navigation }) => {
 
   const onChangeSearch = (query) => setSearchQuery(query);
 
+  const donator = [
+    {
+      donatorName:
+        "Chamara Kanakarathne",
+      image: require("../../assets/donator/donator_1.jpg"),
+      totalFund: "20000.00"
+    },
+    {
+      donatorName:
+        "Sumidu Malshan",
+      image: require("../../assets/donator/donator_2.jpg"),
+      totalFund: "20000.00"
+    },
+    {
+      donatorName:
+        "Fazna Jazim",
+      image: require("../../assets/donator/donator_3.jpg"),
+      totalFund: "20000.00"
+    },
+    {
+      donatorName:
+        "Kamal Rathnayake",
+      image: require("../../assets/donator/donator_4.jpg"),
+      totalFund: "20000.00"
+    },
+    {
+      donatorName:
+        "Isuru Herath",
+      image: require("../../assets/donator/donator_5.jpg"),
+      totalFund: "20000.00"
+    },
+  ];
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -37,82 +70,26 @@ const DonatorList = ({ navigation }) => {
           />
           <Text style={styles.topic}>Donator List</Text>
         </ImageBackground>
-        <TouchableHighlight style={styles.buttonNewLocation} onPress={() => navigation.navigate("NewPollutedLocation")}>
-          <Text style={styles.buttonText}>Add New Polluted Location</Text>
-        </TouchableHighlight>
       </View>
       <View style={styles.container2}>
         <ScrollView>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.buttonVote}>
-                <Text style={styles.buttonText}>Vote to clean</Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.buttonVote}>
-                <Text style={styles.buttonText}>Vote to clean</Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.buttonVote}>
-                <Text style={styles.buttonText}>Vote to clean</Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.buttonVote}>
-                <Text style={styles.buttonText}>Vote to clean</Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
-          <View style={styles.container}>
-            <Card style={styles.innerContainer}>
-              <Text style={styles.paragraph}>Location Name</Text>
-              <Text style={styles.paragraph2}>Location Address</Text>
-              <Text style={styles.paragraph2}>Added Date</Text>
-              <Text style={styles.paragraph2}>Interested to Clean</Text>
-              <TouchableHighlight style={styles.buttonVote}>
-                <Text style={styles.buttonText}>Vote to clean</Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>View</Text>
-              </TouchableHighlight>
-            </Card>
-          </View>
+        {donator.map((donator, key) => (
+            <View style={styles.container}>
+              <Card style={styles.innerContainer}>
+                <Text style={styles.paragraph}>{donator.donatorName}</Text>
+                <View style={styles.articleBottom}>
+                  <Image style={styles.userImage} source={donator.image} />
+                </View>
+                <Text style={styles.paragraph2}>Total Donation (Rs.) - {donator.totalFund}</Text>
+                <TouchableHighlight style={styles.buttonVote}>
+                  <Text style={styles.buttonText}>Add a vote to Donator</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.button}>
+                  <Text style={styles.buttonText}>View</Text>
+                </TouchableHighlight>
+              </Card>
+            </View>
+          ))}
         </ScrollView>
       </View>
     </KeyboardAvoidingView>
@@ -149,7 +126,7 @@ const styles = StyleSheet.create({
     marginTop: 60
   },
   innerContainer: {
-    height: 210,
+    height: 280,
   },
   buttonVote: {
     backgroundColor: "#2B65EC",
@@ -207,9 +184,30 @@ const styles = StyleSheet.create({
   paragraph2: {
     marginLeft: 40,
     fontSize: 15,
+    marginTop: 10
   },
   body: {
     height: "110%",
     display: "flex",
+  },
+  articleBottom: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10
+  },
+  userImage: {
+    width: 100,
+    height: 100,
+    resizeMode: "cover",
+    borderRadius: 60,
+    borderColor: "rgba(0, 0, 0, 0.1)",
+    borderWidth: 2,
+  },
+  username: {
+    fontSize: 18,
+    color: "rgba(0, 0, 0, 0.4)",
+    marginHorizontal: 10,
   },
 });
