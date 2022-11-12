@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { Card, Searchbar } from "react-native-paper";
+import NewPollutedLocation from "./NewPollutedLocaiton";
 
 const PollutedLocationList = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -37,7 +38,7 @@ const PollutedLocationList = () => {
           />
           <Text style={styles.topic}>Polluted Location List</Text>
         </ImageBackground>
-        <TouchableHighlight style={styles.buttonNewLocation}>
+        <TouchableHighlight style={styles.buttonNewLocation} onPress={NewPollutedLocation}>
           <Text style={styles.buttonText}>Add New Polluted Location</Text>
         </TouchableHighlight>
       </View>
