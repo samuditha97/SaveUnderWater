@@ -16,12 +16,14 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { BackgroundImage } from "@rneui/base";
+import DocumentPicker, { types } from "react-native-document-picker";
 
 const Donation = ({ props }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
   const navigation = useNavigation();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -78,6 +80,9 @@ const Donation = ({ props }) => {
             //value={password}
             //onChangeText={(password) => setPassword(password)}
           />
+
+          <Button title="Slip" />
+
           <TextInput
             style={styles.input}
             placeholder="Message"
@@ -105,14 +110,14 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   cover: {
-    display: "flex",
+    flex: 1,
     height: "100%",
     maxHeight: "26%",
     resizeMode: "cover",
     width: "100%",
   },
   container: {
-    display: "flex",
+    flex: 3,
     height: "74%",
     flexDirection: "column",
     padding: 30,
