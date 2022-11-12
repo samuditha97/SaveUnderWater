@@ -17,25 +17,26 @@ const COLORS = {primary: '#fff', white: '#fff', black: '#00061a'};
 
 const slides = [
   {
-    id: '1',
-    image: require('../assets/home.jpg'),
-    title: 'Save Underwater Life',
+    id: "1",
+    image: require("../assets/home.jpg"),
+    title: "Save Underwater Life",
     subtitle: '"No water, no life. No blue, no green"',
   },
   {
-    id: '2',
-    image: require('../assets/event.jpg'),
-    subtitle: 'latest mobile solution for saving underwater lives',
+    id: "2",
+    image: require("../assets/event.jpg"),
+    subtitle: "latest mobile solution for saving underwater lives",
   },
   {
-    id: '3',
-    image: require('../assets/donate.jpg'),
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    id: "3",
+    image: require("../assets/donate.jpg"),
+    subtitle:
+      "If you have beautiful heart you can donate to protect underwater lives .",
   },
   {
-    id: '4',
-    image: require('../assets/advising.jpg'),
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    id: "4",
+    image: require("../assets/advising.jpg"),
+    subtitle: "You can get knowledge from professional scientists.",
   },
 ];
 
