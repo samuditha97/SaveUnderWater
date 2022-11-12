@@ -10,6 +10,7 @@ import Event from "./screens/Donor/Event";
 import OneEvent from "./screens/Donor/OneEvent";
 import EventList from "./screens/Volunteer/EventList";
 import Donation from "./screens/Donor/Donation";
+import Facts from './screens/Biologist/Facts';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,7 @@ const App = () => {
           <Stack.Screen name="OneEvent" component={OneEvent} />
           <Stack.Screen name="EventList" component={EventList} />
           <Stack.Screen name="Donation" component={Donation} />
+          <Stack.Screen name='Facts' component={Facts} />
         </Stack.Navigator>
       </NavigationContainer>
     )

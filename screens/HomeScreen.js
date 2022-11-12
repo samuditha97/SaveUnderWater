@@ -24,7 +24,7 @@ export const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     const validate = async () => {
       const token = await AsyncStorage.getItem("token");
-      if (token) navigation.navigate("Event");
+      if (token) navigation.navigate("Facts");
     };
     validate();
     reset();
