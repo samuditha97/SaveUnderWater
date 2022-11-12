@@ -19,11 +19,11 @@ import { Card, Searchbar } from "react-native-paper";
 import OneEvent from "./OneEvent";
 import { useNavigation } from "@react-navigation/native";
 
-const Event = ({ props }) => {
+const Event = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
-  const navigation = useNavigation();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -50,7 +50,7 @@ const Event = ({ props }) => {
               <Text style={styles.paragraph2}>Total Funds</Text>
               <TouchableHighlight
                 style={styles.button}
-                onPress={(OneEvent) => navigation.navigate(props)}
+                onPress={() => navigation.navigate("OneEvent")}
               >
                 <Text style={styles.buttonText}>View</Text>
               </TouchableHighlight>

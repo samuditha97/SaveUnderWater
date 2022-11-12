@@ -17,7 +17,7 @@ import {
 import { Icon } from "react-native-elements";
 import { Card, Searchbar } from "react-native-paper";
 
-const OneEvent = () => {
+const OneEvent = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -35,8 +35,47 @@ const OneEvent = () => {
             onChangeText={onChangeSearch}
             value={searchQuery}
           />
-          <Text style={styles.topic}>Event List</Text>
+          <Text style={styles.topic}>Event Name</Text>
         </ImageBackground>
+      </View>
+      <View style={styles.container2}>
+        <ScrollView>
+          <View style={styles.container}>
+            <Card style={styles.innerContainer}>
+              <ScrollView>
+                <Text style={styles.paragraph}>Event Name</Text>
+                <Text style={styles.paragraph2}>Date</Text>
+                <Text style={styles.paragraph2}>Venue</Text>
+                <Text style={styles.paragraph2}>Description</Text>
+                <Text style={styles.paragraph2}>Bank Details</Text>
+                <Text style={styles.paragraph}>Event Name</Text>
+                <Text style={styles.paragraph2}>Date</Text>
+                <Text style={styles.paragraph2}>Venue</Text>
+                <Text style={styles.paragraph2}>Description</Text>
+                <Text style={styles.paragraph2}>Bank Details</Text>
+                <Text style={styles.paragraph}>Event Name</Text>
+                <Text style={styles.paragraph2}>Date</Text>
+                <Text style={styles.paragraph2}>Venue</Text>
+                <Text style={styles.paragraph2}>Description</Text>
+                <Text style={styles.paragraph2}>Bank Details</Text>
+                <Text style={styles.paragraph}>Event Name</Text>
+                <Text style={styles.paragraph2}>Date</Text>
+                <Text style={styles.paragraph2}>Venue</Text>
+                <Text style={styles.paragraph2}>Description</Text>
+                <Text style={styles.paragraph2}>Bank Details</Text>
+              </ScrollView>
+            </Card>
+          </View>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => navigation.navigate("Donation")}
+          >
+            <Text style={styles.buttonText}>Donate</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.button2}>
+            <Text style={styles.buttonText2}>Progress</Text>
+          </TouchableHighlight>
+        </ScrollView>
       </View>
     </KeyboardAvoidingView>
   );
@@ -71,20 +110,40 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   innerContainer: {
-    height: 170,
+    height: 470,
+    borderColor: "#2B65EC",
+    borderWidth: 1,
   },
   button: {
     backgroundColor: "#2B65EC",
-    paddingHorizontal: 5,
+    paddingHorizontal: 6,
     paddingVertical: 4,
     fontSize: 16,
     borderRadius: 8,
-    marginTop: -5,
-    width: 60,
+    marginTop: 30,
+    width: 100,
     marginLeft: 240,
+  },
+  button2: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+    fontSize: 16,
+    borderRadius: 8,
+    marginTop: -30,
+    width: 100,
+    marginLeft: 10,
+    borderColor: "#2B65EC",
+    borderWidth: 1,
   },
   buttonText: {
     color: "#ffffff",
+    fontSize: 16,
+    fontWeight: "700",
+    textAlign: "center",
+  },
+  buttonText2: {
+    color: "#000",
     fontSize: 16,
     fontWeight: "700",
     textAlign: "center",
